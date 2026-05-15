@@ -23,9 +23,6 @@ export const CartSlice = createSlice({
             itemToUpdate.quantity = action.payload.quantity
         }
     },
-    toggleAdded: (state, action) => {
-        state[action.payload].addedToCart = !state[action.payload].addedToCart
-    }
   },
 });
 
