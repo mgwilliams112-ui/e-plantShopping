@@ -290,8 +290,16 @@ function ProductList({ onHomeClick }) {
 
     const handleAddToCart = (item) => {
         dispatch(addItem(item));
-        dispatch(toggleAdded(item));
     };
+
+    const itemInCart = (item) => {
+        const cartItem = cartItems.find(plant => plant.name === item.name)
+        if (cartItem) {
+            return true
+        } else {
+            return false
+        }
+    }
 
     const totalCartCount = (cartItems) => {
         let totalCount = 0
@@ -340,9 +348,9 @@ function ProductList({ onHomeClick }) {
                                     <button
                                         className="product-button"
                                         onClick={() => handleAddToCart(item)} // Handle adding plant to cart
-                                        disabled={item.addedToCart}
+                                        disabled={itemInCart(item)}
                                     >
-                                        {item.addedToCart ? 'Added to Cart' : 'Add to Cart'}
+                                        {itemInCart(item) ? 'Added to Cart' : 'Add to Cart'}
                                     </button>
                                 </div>
                     ))}
